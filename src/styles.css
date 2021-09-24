@@ -1,0 +1,94 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.pokemon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 350px;
+}
+
+.pokemon {
+  border: 1px solid #eee;
+  margin: 8px 0 8px 0;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  background-color: coral;
+  color: white;
+  padding: 10px 0 10px 0;
+  width: 250px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.previousClassName {
+  margin-right: 10px;
+  background-color: coral;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nextClassName {
+  margin-left: 10px;
+  background-color: coral;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.paginationPage {
+  margin: 0 15px 0 15px;
+}
+
+.pagination_link_active {
+  color: coral;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.disableButtonClick {
+  cursor: not-allowed !important;
+  opacity: 0.5;
+}
+
+.disableButtonClick2 {
+  pointer-events: none;
+}
+
+.loader {
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid coral;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  margin: 20px 0 20px 0;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
