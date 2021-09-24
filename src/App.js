@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Component } from "react";
 import "./styles.css";
-import ReactPaginate from "react-paginate";
+import Paginate from "./Paginate";
 
 class App extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class App extends Component {
     };
   }
 
-  // Fetch data on page load
+  // Fetch data on initial page load
   componentDidMount() {
     this.fetchPokemonsFromApi(0);
   }
@@ -57,6 +57,7 @@ class App extends Component {
     );
   };
 
+  // Set the selected page to first page
   handleFirstPageClick = () => {
     console.log("Clicked");
     this.setState(
@@ -74,6 +75,7 @@ class App extends Component {
     );
   };
 
+  // Set the selected page to last page
   handleLastPageClick = () => {
     console.log("Clicked");
     this.setState(
@@ -97,6 +99,7 @@ class App extends Component {
         <h1>React Pagination</h1>
         <div className="pokemon-container">
           {this.state.loading && <div class="loader"></div>}
+          {this.state.error && <div>{this.state.error}</div>}
           {this.state.pokemons &&
             this.state.pokemons.map((pokemon, index) => {
               return (
@@ -106,39 +109,14 @@ class App extends Component {
               );
             })}
         </div>
-        <div className="pagination-container">
-          <li onClick={this.handleFirstPageClick} className="previousClassName">
-            {"<<"}
-          </li>
-          <ReactPaginate
-            previousLabel={"← Previous"}
-            pageRangeDisplayed="1"
-            marginPagesDisplayed="2"
-            nextLabel={"Next →"}
-            pageCount={this.state.pageCount}
-            onPageChange={this.handlePageClick}
-            containerClassName={"pagination"}
-            previousClassName={`previousClassName ${
-              this.state.loading && "disableButtonClick"
-            } `}
-            previousLinkClassName={`previousClassName ${
-              this.state.loading && "disableButtonClick2"
-            } `}
-            nextClassName={`nextClassName ${
-              this.state.loading && "disableButtonClick"
-            } `}
-            nextLinkClassName={`nextClassName ${
-              this.state.loading && "disableButtonClick2"
-            } `}
-            disabledClassName={"pagination__link--disabled"}
-            activeClassName={"pagination_link_active"}
-            pageClassName={"paginationPage"}
-            forcePage={this.state.currentPage}
-          />
-          <li onClick={this.handleLastPageClick} className="nextClassName">
-            {">>"}
-          </li>
-        </div>
+        <Paginate
+          pageCount={this.state.pageCount}
+          currentPage={this.state.currentPage}
+          loading={this.state.loading}
+          handlePageClick={this.handlePageClick}
+          handleFirstPageClick={this.handleFirstPageClick}
+          handleLastPageClick={this.handleLastPageClick}
+        />
       </div>
     );
   }
