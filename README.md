@@ -1,2 +1,3 @@
 # React-Pagination
-Created with CodeSandbox
+
+React pagination demo using "react-paginate" npm package.
